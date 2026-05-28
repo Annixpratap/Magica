@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magica.com Product Intelligence Infographic</title>
+  <style>
+    :root {
+      --ink: #17131f;
+      --muted: #625b70;
+      --paper: #fffaf1;
+      --panel: #ffffff;
+      --line: rgba(23,19,31,.14);
+      --rose: #ff4f88;
+      --cyan: #00a7b8;
+      --lime: #82b440;
+      --gold: #f7b733;
+      --violet: #6f5cff;
+      --night: #21182d;
+      --shadow: 0 22px 60px rgba(30, 24, 42, .14);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(255,79,136,.18), transparent 28rem),
+        radial-gradient(circle at 85% 0%, rgba(0,167,184,.18), transparent 26rem),
+        linear-gradient(180deg, #fffaf1 0%, #f7fbf8 38%, #fffaf1 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--cyan), var(--violet));
+      z-index: 30;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px clamp(16px, 4vw, 56px);
+      background: rgba(255,250,241,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+    .mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: white;
+      border-radius: var(--radius);
+      background: conic-gradient(from 140deg, var(--rose), var(--gold), var(--cyan), var(--violet), var(--rose));
+      box-shadow: 0 10px 24px rgba(111,92,255,.24);
+    }
+    .navlinks {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .navlinks a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 7px 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+    }
+    .navlinks a:hover { border-color: var(--line); background: rgba(255,255,255,.65); color: var(--ink); }
+
+    .hero {
+      min-height: calc(100vh - 59px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      align-items: center;
+      gap: clamp(26px, 5vw, 70px);
+      padding: clamp(42px, 7vw, 84px) clamp(16px, 5vw, 76px) 34px;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      color: var(--muted);
+      font-weight: 760;
+      font-size: 13px;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(48px, 8vw, 112px);
+      line-height: .9;
+      letter-spacing: 0;
+      max-width: 820px;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 690px;
+      color: #473f54;
+      font-size: clamp(18px, 2vw, 23px);
+    }
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: var(--night);
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 15px 30px rgba(33,24,45,.18);
+    }
+    .btn.secondary {
+      background: white;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    .machine {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
+    .orbit {
+      position: absolute;
+      width: min(88vw, 500px);
+      aspect-ratio: 1;
+      border: 1px dashed rgba(23,19,31,.22);
+      border-radius: 50%;
+      animation: spin 28s linear infinite;
+    }
+    .orbit:nth-child(2) { width: min(72vw, 390px); animation-duration: 21s; animation-direction: reverse; }
+    .core {
+      width: min(82vw, 390px);
+      min-height: 390px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,255,255,.54)),
+        linear-gradient(135deg, rgba(255,79,136,.2), rgba(0,167,184,.18));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      transform: rotate(-2deg);
+    }
+    .core h2 { margin: 0 0 10px; font-size: 26px; }
+    .core-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .chip {
+      min-height: 84px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+      box-shadow: 0 10px 24px rgba(23,19,31,.08);
+    }
+    .chip b { display: block; font-size: 14px; }
+    .chip span { color: var(--muted); font-size: 12px; }
+    .sat {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 32px rgba(23,19,31,.12);
+      font-size: 12px;
+      font-weight: 850;
+      text-align: center;
+      animation: float 4.5s ease-in-out infinite;
+    }
+    .sat.s1 { top: 24px; left: 12%; color: var(--rose); }
+    .sat.s2 { top: 80px; right: 8%; color: var(--cyan); animation-delay: -.8s; }
+    .sat.s3 { bottom: 80px; left: 5%; color: var(--lime); animation-delay: -1.6s; }
+    .sat.s4 { bottom: 26px; right: 18%; color: var(--violet); animation-delay: -2.2s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float { 50% { transform: translateY(-12px); } }
+
+    section {
+      padding: 72px clamp(16px, 5vw, 76px);
+    }
+    .section-head {
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 7px 0 10px;
+      font-size: clamp(32px, 4.6vw, 62px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .lead { color: var(--muted); font-size: 18px; max-width: 780px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .stat, .card, .timeline-step, .source, .quote {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 16px 40px rgba(23,19,31,.08);
+    }
+    .stat { padding: 22px; min-height: 150px; position: relative; overflow: hidden; }
+    .stat:before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--cyan));
+    }
+    .num { font-size: clamp(30px, 5vw, 58px); font-weight: 950; line-height: 1; }
+    .stat span { color: var(--muted); display: block; margin-top: 8px; }
+
+    .problem {
+      background: var(--night);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .problem .lead, .problem .eyebrow { color: rgba(255,255,255,.74); }
+    .pain-grid, .node-grid, .compare-grid, .use-grid, .reco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .pain {
+      padding: 20px;
+      min-height: 170px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.07);
+    }
+    .pain strong { display: block; font-size: 18px; margin-bottom: 8px; }
+    .pain p { margin: 0; color: rgba(255,255,255,.72); }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+      margin-top: 28px;
+    }
+    .flowbox {
+      min-height: 170px;
+      padding: 22px;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: white;
+    }
+    .arrow {
+      width: 46px;
+      height: 3px;
+      background: var(--ink);
+      position: relative;
+    }
+    .arrow:after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -6px;
+      border-left: 12px solid var(--ink);
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+    }
+
+    .card { padding: 20px; min-height: 185px; }
+    .card h3, .timeline-step h3, .source h3, .quote h3 { margin: 0 0 8px; font-size: 20px; }
+    .card p, .timeline-step p, .source p, .quote p { margin: 0; color: var(--muted); }
+    .badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: white;
+      background: var(--ink);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .image { background: #fff0f5; border-top: 5px solid var(--rose); }
+    .video { background: #effcff; border-top: 5px solid var(--cyan); }
+    .audio { background: #fff8df; border-top: 5px solid var(--gold); }
+    .llm { background: #f1fff0; border-top: 5px solid var(--lime); }
+    .utility { background: #f3f0ff; border-top: 5px solid var(--violet); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: steps;
+    }
+    .timeline-step { padding: 18px; position: relative; overflow: hidden; }
+    .timeline-step:before {
+      counter-increment: steps;
+      content: counter(steps);
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      font-weight: 900;
+    }
+
+    .darkband {
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(255,79,136,.16), transparent 38%),
+        linear-gradient(225deg, rgba(0,167,184,.18), transparent 42%),
+        var(--night);
+    }
+    .darkband .lead, .darkband .card p, .darkband .source p, .darkband .quote p { color: rgba(255,255,255,.72); }
+    .darkband .card, .darkband .source, .darkband .quote {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+
+    .compare-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .competitor {
+      padding: 18px;
+      border-radius: var(--radius);
+      background: white;
+      border: 1px solid var(--line);
+    }
+    .competitor b { display: block; margin-bottom: 6px; font-size: 18px; }
+    .competitor span { color: var(--muted); font-size: 14px; }
+
+    .meter {
+      margin-top: 14px;
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(23,19,31,.1);
+    }
+    .meter i {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.1s ease;
+    }
+    .visible .meter i { transform: scaleX(1); }
+
+    .quote {
+      padding: 26px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 120px 1fr;
+      align-items: center;
+    }
+    .score {
+      display: grid;
+      place-items: center;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: conic-gradient(var(--gold) 0 68%, rgba(255,255,255,.25) 68% 100%);
+      color: var(--ink);
+      font-size: 28px;
+      font-weight: 950;
+    }
+    .quote small { color: rgba(255,255,255,.62); }
+
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .source { padding: 18px; }
+    .source ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+    .source li { margin: 6px 0; }
+
+    footer {
+      padding: 28px clamp(16px, 5vw, 76px) 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.56);
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .machine { min-height: 440px; }
+      .stats, .pain-grid, .node-grid, .compare-grid, .use-grid, .reco-grid, .timeline, .sources {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .workflow { grid-template-columns: 1fr; }
+      .arrow { width: 3px; height: 34px; margin-left: 24px; }
+      .arrow:after {
+        right: auto;
+        left: -6px;
+        top: auto;
+        bottom: -1px;
+        border-top: 12px solid var(--ink);
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 0;
+      }
+    }
+    @media (max-width: 640px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .navlinks { justify-content: flex-start; }
+      .stats, .pain-grid, .node-grid, .compare-grid, .use-grid, .reco-grid, .timeline, .sources {
+        grid-template-columns: 1fr;
+      }
+      .quote { grid-template-columns: 1fr; }
+      .sat { display: none; }
+      .core { min-height: auto; }
+      .core-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <nav class="nav">
+    <div class="brand"><div class="mark">M</div> Magica Product Intelligence</div>
+    <div class="navlinks">
+      <a href="#problem">Problem</a>
+      <a href="#product">Product</a>
+      <a href="#api">API</a>
+      <a href="#competition">Competition</a>
+      <a href="#recommendations">Roadmap</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="kicker">2026 product intelligence report + public web research</div>
+      <h1>Magica.com, mapped as an AI orchestration engine.</h1>
+      <p>Magica positions itself as an all-in-one AI platform where creators, teams, developers, and AI agents can combine text, image, video, audio, and utility tools into reusable workflows.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#executive">Read the verdict</a>
+        <a class="btn secondary" href="https://magica.com/" target="_blank" rel="noreferrer">Visit magica.com</a>
+      </div>
+    </div>
+    <div class="machine" aria-label="Animated workflow diagram">
+      <div class="orbit"></div>
+      <div class="orbit"></div>
+      <div class="sat s1">Image</div>
+      <div class="sat s2">Video</div>
+      <div class="sat s3">LLM</div>
+      <div class="sat s4">Audio</div>
+      <div class="core">
+        <h2>One workflow layer</h2>
+        <p>Instead of stitching together separate model vendors, Magica provides a visual workflow builder, REST API, async runs, webhooks, credits, system workflows, and an MCP server for agent-native operation.</p>
+        <div class="core-grid">
+          <div class="chip"><b>Build</b><span>Canvas, nodes, edges, validation</span></div>
+          <div class="chip"><b>Run</b><span>POST /v1/runs and receive a run ID</span></div>
+          <div class="chip"><b>Notify</b><span>Signed webhook events and polling</span></div>
+          <div class="chip"><b>Automate</b><span>MCP tools for AI assistants</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="executive">
+    <div class="section-head reveal">
+      <div class="eyebrow">Executive Snapshot</div>
+      <h2>The promise: one place for many AI jobs.</h2>
+      <p class="lead">The report’s core conclusion is that Magica solves a real product pain: multi-step AI systems require too many accounts, APIs, tokens, retries, polling loops, and model-specific glue code. Magica tries to become the orchestration layer above those models.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="num" data-count="2500">0</div><span>publicly claimed AI tools under one subscription on Magica’s about page</span></div>
+      <div class="stat reveal"><div class="num" data-count="5">0</div><span>node categories in the report: image, video, audio, LLM, utility</span></div>
+      <div class="stat reveal"><div class="num" data-count="23">0</div><span>MCP tools referenced by the report for assistant-driven workflows</span></div>
+      <div class="stat reveal"><div class="num" data-count="3">0</div><span>Trustpilot reviews visible for magica.com on May 28, 2026</span></div>
+    </div>
+  </section>
+
+  <section class="problem" id="problem">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Problem</div>
+      <h2>AI products are easy to imagine and annoying to wire together.</h2>
+      <p class="lead">A simple creative product can require one service for image generation, another for captions, another for voiceover, and custom code to move data between them.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain reveal"><strong>Vendor sprawl</strong><p>Flux, Midjourney, DALL-E, OpenAI, Anthropic, ElevenLabs, PlayHT, and others each bring their own accounts, APIs, auth tokens, SDKs, rate limits, and errors.</p></div>
+      <div class="pain reveal"><strong>Glue code tax</strong><p>Teams must pass outputs across steps, validate formats, retry failures, cancel partial jobs, and maintain fragile integration code.</p></div>
+      <div class="pain reveal"><strong>Async complexity</strong><p>AI jobs often take time. Without a workflow platform, developers must build polling, background workers, webhooks, and job state tracking.</p></div>
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="section-head reveal">
+      <div class="eyebrow">Product Model</div>
+      <h2>Magica works like a reusable recipe system.</h2>
+      <p class="lead">The report defines workflows as saved recipes: inputs go in, nodes transform them, edges connect outputs to inputs, and final media or text comes out.</p>
+    </div>
+    <div class="workflow reveal">
+      <div class="flowbox"><h3>Inputs</h3><p>Prompt text, uploaded images, product descriptions, media files, or structured parameters.</p></div>
+      <div class="arrow"></div>
+      <div class="flowbox"><h3>Processing</h3><p>Nodes generate images, create video, narrate audio, summarize text, transcribe speech, merge media, or call LLMs.</p></div>
+      <div class="arrow"></div>
+      <div class="flowbox"><h3>Outputs</h3><p>Final images, clips, captions, voiceovers, campaign assets, zipped deliverables, or API-readable results.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head reveal">
+      <div class="eyebrow">Node Taxonomy</div>
+      <h2>The five building blocks.</h2>
+    </div>
+    <div class="node-grid">
+      <div class="card image reveal"><span class="badge">Image</span><h3>Generate or edit visuals</h3><p>Report examples include Flux 2 Pro, GPT Image 1.5, and Nano Banana Pro. Public Magica pages also list AI Image Generator, AI Photo Generator, AI Art Generator, logo tools, background changer, and image editor.</p></div>
+      <div class="card video reveal"><span class="badge">Video</span><h3>Create clips from text or images</h3><p>Report examples include Runway, Kling, and Google Veo. Public pages list AI Video Generator and AI Lipsync Generator.</p></div>
+      <div class="card audio reveal"><span class="badge">Audio</span><h3>Voice, music, and sound</h3><p>Report examples include ElevenLabs TTS and music generation models. Public pages list AI Music Generator, AI Voice Generator, and AI Voice Cloner.</p></div>
+      <div class="card llm reveal"><span class="badge">LLM</span><h3>Read, write, analyze, summarize</h3><p>The report lists GPT-5, Claude Sonnet, and OpenRouter models. The homepage crawl listed GPT, Gemini, Claude, Perplexity, Grok, DeepSeek, and other model brands.</p></div>
+      <div class="card utility reveal"><span class="badge">Utility</span><h3>Non-AI helper operations</h3><p>Examples include merge videos, extract audio from video, transcribe speech, validate node connections, and route workflow outputs.</p></div>
+      <div class="card reveal"><span class="badge">System Workflows</span><h3>Pre-built recipes</h3><p>Read-only templates such as Flux 2 Pro and Nano Banana Pro can be run immediately for common tasks or fast testing.</p></div>
+    </div>
+  </section>
+
+  <section class="darkband" id="api">
+    <div class="section-head reveal">
+      <div class="eyebrow">Developer Surface</div>
+      <h2>Visual canvas for builders, REST API for products, MCP for agents.</h2>
+      <p class="lead">Magica’s strongest story is not only access to models, but the operational layer around model chaining.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step reveal"><h3>Build</h3><p>Use the canvas to drag nodes, connect edges, set inputs, and save a workflow definition.</p></div>
+      <div class="timeline-step reveal"><h3>Copy ID</h3><p>Take the workflow ID from the dashboard and use it from application code.</p></div>
+      <div class="timeline-step reveal"><h3>Start run</h3><p>Call POST /v1/runs with the workflow ID and inputs; Magica returns a runId immediately.</p></div>
+      <div class="timeline-step reveal"><h3>Wait</h3><p>Poll the run status or receive a signed webhook when the job completes or fails.</p></div>
+      <div class="timeline-step reveal"><h3>Use result</h3><p>Deliver the final media, campaign asset, caption, narration, summary, or product output.</p></div>
+    </div>
+    <div class="node-grid" style="margin-top:14px">
+      <div class="card reveal"><h3>Workflows</h3><p>Create, update, list, duplicate, or delete workflow definitions. Example: POST /v1/workflows.</p></div>
+      <div class="card reveal"><h3>Runs</h3><p>Start a workflow, check status, or cancel execution. Example: POST /v1/runs.</p></div>
+      <div class="card reveal"><h3>Webhooks</h3><p>Register completion/failure notifications. The report says events are signed with HMAC-SHA256 and retried on temporary failure.</p></div>
+      <div class="card reveal"><h3>Credits & catalog</h3><p>Check balance and estimate model costs before expensive jobs. Cancelled runs refund unused credits, according to the report.</p></div>
+      <div class="card reveal"><h3>MCP server</h3><p>The report lists api.magica.com/api/mcp as the endpoint for MCP-compatible assistants such as Claude, Cursor, or GitHub Copilot.</p></div>
+      <div class="card reveal"><h3>Agentic edge</h3><p>An assistant can build workflows, run them, inspect recent runs, and estimate costs without the user writing traditional integration code.</p></div>
+    </div>
+  </section>
+
+  <section id="competition">
+    <div class="section-head reveal">
+      <div class="eyebrow">Competitive Landscape</div>
+      <h2>Magica sits between raw model APIs and broad automation tools.</h2>
+      <p class="lead">The report argues that no single competitor combines visual AI workflows, multi-modal model nodes, async cloud runs, REST API access, credit awareness, and first-class MCP support.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="competitor reveal"><b>Replicate</b><span>Huge open-source model library and raw model API access. Weaker for visual multi-step chaining and MCP.</span><div class="meter"><i style="--w:82%"></i></div></div>
+      <div class="competitor reveal"><b>Fal.ai</b><span>Speed-focused image/video inference. Strong latency story, weaker workflow orchestration story.</span><div class="meter"><i style="--w:78%"></i></div></div>
+      <div class="competitor reveal"><b>ComfyUI</b><span>Deep visual node control and massive community for image workflows, but more setup and infrastructure responsibility.</span><div class="meter"><i style="--w:74%"></i></div></div>
+      <div class="competitor reveal"><b>n8n / Make</b><span>Excellent general app automation and connectors, but AI is an add-on rather than the product core.</span><div class="meter"><i style="--w:70%"></i></div></div>
+      <div class="competitor reveal"><b>RunPod / Modal</b><span>GPU infrastructure for teams that want maximum control. More powerful, but less packaged.</span><div class="meter"><i style="--w:66%"></i></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head reveal">
+      <div class="eyebrow">Use Cases</div>
+      <h2>Who should care?</h2>
+    </div>
+    <div class="use-grid">
+      <div class="card reveal"><h3>Indie developers</h3><p>Build AI avatar generators, campaign generators, thumbnail engines, and multi-step SaaS features with one workflow call instead of several vendor integrations.</p></div>
+      <div class="card reveal"><h3>Marketing teams</h3><p>Create product images, captions, social packs, voiceovers, ad variants, and campaign material through templates and visual workflows.</p></div>
+      <div class="card reveal"><h3>Startup product teams</h3><p>Generate A/B test assets, produce variations at scale, and plug async workflow runs into product pipelines using webhooks.</p></div>
+      <div class="card reveal"><h3>AI agent developers</h3><p>Give assistants the ability to orchestrate media generation, text work, research summaries, and audio production through MCP.</p></div>
+      <div class="card reveal"><h3>Media platforms</h3><p>Auto-generate thumbnails, narration, captions, summaries, and publish-ready media each time a new article or asset enters the system.</p></div>
+      <div class="card reveal"><h3>Everyday creators</h3><p>Public Magica pages emphasize beginners and professionals using many AI models from one dashboard instead of switching tabs and subscriptions.</p></div>
+    </div>
+  </section>
+
+  <section class="darkband">
+    <div class="section-head reveal">
+      <div class="eyebrow">Market Signals</div>
+      <h2>Public reputation is early and mixed.</h2>
+      <p class="lead">As of May 28, 2026, Trustpilot shows a very small review base for magica.com itself, so the score should be treated as a weak signal, not a mature reputation metric.</p>
+    </div>
+    <div class="quote reveal">
+      <div class="score">3.4</div>
+      <div>
+        <h3>Trustpilot snapshot</h3>
+        <p>Trustpilot lists magica.com as an unclaimed profile with 3 reviews, a 3.4 average rating, and review distribution of 33% five-star, 33% four-star, and 34% one-star. Positive reviews mention value, templates, and having Claude/GPT/Gemini in one dashboard; criticism mentions free-vs-paid expectations and content restrictions.</p>
+        <small>Source checked May 28, 2026.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="recommendations">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gaps & Recommendations</div>
+      <h2>The weaknesses are real, but mostly product-investment problems.</h2>
+      <p class="lead">The report’s honest assessment says Magica lags in breadth, transparency, community, streaming, and enterprise deployment options.</p>
+    </div>
+    <div class="reco-grid">
+      <div class="card reveal"><h3>Open a model marketplace</h3><p>Let third-party developers contribute nodes and models with verified/community quality labels.</p></div>
+      <div class="card reveal"><h3>Add template gallery</h3><p>Ship 50-100 ready-made workflows: product images, podcast highlights, social packs, video thumbnails, and campaign generators.</p></div>
+      <div class="card reveal"><h3>Build core connectors</h3><p>Add Slack, Google Sheets, webhook triggers, Notion, Shopify, email, and storage outputs before chasing 1,000 integrations.</p></div>
+      <div class="card reveal"><h3>Introduce streaming mode</h3><p>Offer progressive previews for latency-sensitive image or video jobs while preserving async workflows for complex pipelines.</p></div>
+      <div class="card reveal"><h3>Clarify pricing</h3><p>Show real examples: one Flux image equals X credits and approximately Y dollars. Add a visible trial tier and cost calculator.</p></div>
+      <div class="card reveal"><h3>Enterprise path</h3><p>Publish a roadmap for VPC, on-premise, governance, audit logs, and data-residency controls for regulated buyers.</p></div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sources & Evidence</div>
+      <h2>What this infographic is based on.</h2>
+    </div>
+    <div class="sources">
+      <div class="source reveal">
+        <h3>Assignment PDF</h3>
+        <p>Magica_Product_Intelligence_Report (1).pdf</p>
+        <ul>
+          <li>Problem framing, workflow/node/run/webhook/credit concepts.</li>
+          <li>API groups and developer sequence.</li>
+          <li>MCP server angle and 23-tool claim.</li>
+          <li>Competitive analysis, gaps, recommendations, use cases, executive summary.</li>
+        </ul>
+      </div>
+      <div class="source reveal">
+        <h3>Magica public pages</h3>
+        <p><a href="https://magica.com/" target="_blank" rel="noreferrer">magica.com</a> and <a href="https://magica.com/blog/about" target="_blank" rel="noreferrer">About Magica</a></p>
+        <ul>
+          <li>All-in-one AI agent/platform positioning.</li>
+          <li>2500+ tools claim and $15/month about-page claim.</li>
+          <li>Mission: democratize AI, affordability, simplicity, innovation.</li>
+          <li>Public tool categories and company footer: GalaxyAI Inc., 2026.</li>
+        </ul>
+      </div>
+      <div class="source reveal">
+        <h3>External reputation check</h3>
+        <p><a href="https://www.trustpilot.com/review/magica.com" target="_blank" rel="noreferrer">Trustpilot review page</a></p>
+        <ul>
+          <li>3.4 average from 3 reviews as checked May 28, 2026.</li>
+          <li>Very low review count, so use as qualitative signal only.</li>
+          <li>Common user themes: value, multi-model dashboard, templates, clutter, payment expectations.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Bottom line:</strong> Magica is best understood as a cloud AI workflow and orchestration layer. Its differentiated bet is MCP-enabled agentic operation; its biggest execution risks are marketplace breadth, pricing clarity, connectors, streaming, trust signals, and enterprise readiness.
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const revealItems = [...document.querySelectorAll('.reveal')];
+    const counters = [...document.querySelectorAll('[data-count]')];
+    let counted = new WeakSet();
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.width = `${Math.max(0, scrollY / max) * 100}%`;
+    }
+
+    function count(el) {
+      if (counted.has(el)) return;
+      counted.add(el);
+      const end = Number(el.dataset.count);
+      const suffix = end === 2500 ? '+' : '';
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(end * eased).toLocaleString() + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        const counter = entry.target.querySelector('[data-count]');
+        if (counter) count(counter);
+        if (entry.target.matches('[data-count]')) count(entry.target);
+      });
+    }, { threshold: 0.18 });
+
+    revealItems.forEach(item => observer.observe(item));
+    counters.forEach(item => observer.observe(item));
+    addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>
